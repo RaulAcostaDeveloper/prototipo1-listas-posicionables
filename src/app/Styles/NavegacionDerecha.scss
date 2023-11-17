@@ -1,0 +1,108 @@
+.navegacionDerecha {
+    z-index: 1;
+    width: calc( 100% - 50px );
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgb(204, 196, 165);
+    .containerActions {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .aniadirNuevoButton {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    .elementoEnLista {
+        width: 100%;
+        height: 60px;
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .tituloElemento {
+            width: 40px;
+            height: 50px;
+            border: 1px solid red;
+        }
+        .cantidadElemento {
+            width: 90px;
+            height: 50px;
+            border: 1px solid red;
+            .selectorDeSimbolo {
+                width: 100%;
+                height: 20px;
+                display: flex;
+                justify-content: space-between;
+                button {
+                    width: 20px;
+                    height: 100%;
+                    background-color: transparent;
+                    border: none;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                }
+            }
+            .cantidad {
+                display: flex;
+                justify-content: center;
+            }
+        }
+        .fechaPrioridad {
+            width: 45px;
+            height: 50px;
+            border: 1px solid red;
+        }
+        .checkboxElemento {
+            width: 25px;
+            height: 50px;
+            border: 1px solid red; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .prioridadElemento {
+            width: 50px;
+            height: 50px;
+            font-size: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid red;
+            position: relative;
+            .cambiadorDePrioridad {
+                position: absolute;
+                width: 20px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                button {
+                    width: 100%;
+                    height: 20px;
+                    background-color: transparent;
+                    border: none;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                }
+            }
+        }
+    }
+}
