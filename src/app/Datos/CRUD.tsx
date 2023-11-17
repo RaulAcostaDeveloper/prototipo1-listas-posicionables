@@ -92,3 +92,31 @@ if (arregloDeListasSimple.length === 0) {
     aniadirNuevaListaSimple(obj);
     
 }
+
+// Parche "polyfills" para que no salga error "ReferenceError: CustomEvent is not defined" al momento de ejecución en node.js
+
+(function () {
+    if (typeof window.CustomEvent === 'function') return false;
+  
+    interface CustomEventParams {
+      bubbles?: boolean;
+      cancelable?: boolean;
+      detail?: any;
+    }
+  
+    function CustomEvent(event: string, params?: CustomEventParams): CustomEvent {
+      params = params || { bubbles: false, cancelable: false, detail: undefined };
+      const evt = document.createEvent('CustomEvent') as CustomEvent;
+      evt.initCustomEvent(
+        event,
+        params.bubbles || false,
+        params.cancelable || false,
+        params.detail || undefined
+      );
+      return evt;
+    }
+  
+    CustomEvent.prototype = window.Event.prototype;
+    // @ts-ignore
+    window.CustomEvent = CustomEvent;
+  })();
