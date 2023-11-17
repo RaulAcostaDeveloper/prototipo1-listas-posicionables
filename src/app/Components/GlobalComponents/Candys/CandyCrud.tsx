@@ -38,8 +38,11 @@ export const setIsKeyListenerActive = (toogle: boolean) => {
 }
 // Escucha el evento en el candy
 const mandarAlertaDeCambioDeMatrix = () => {
-    const event = new CustomEvent("cambioEnMatrix", {});
-    document.dispatchEvent(event)
+    // Usa typeof window !== 'undefined' para que solo use CustomEvent en el navegador y no en el servidor
+    if (typeof window !== 'undefined') {
+        const event = new CustomEvent("cambioEnMatrix", {});
+        document.dispatchEvent(event)
+      }
 }
 
 // -------------------------------------------------------

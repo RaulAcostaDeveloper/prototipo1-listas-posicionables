@@ -75,12 +75,18 @@ export const aniadeElementoNuevo = () => {
 
 // Método que ejecuta el renderizado
 const renderLeft = () => {
-    const event = new CustomEvent("renderLeft", {});
-    document.dispatchEvent(event)
+    // Usa typeof window !== 'undefined' para que solo use CustomEvent en el navegador y no en el servidor
+    if (typeof window !== 'undefined') {
+        const event = new CustomEvent("renderLeft", {});
+        document.dispatchEvent(event);
+    }
 }
 const renderRight = () => {
-    const event = new CustomEvent("renderRight", {});
-    document.dispatchEvent(event)
+    // Usa typeof window !== 'undefined' para que solo use CustomEvent en el navegador y no en el servidor
+    if (typeof window !== 'undefined') {
+        const event = new CustomEvent("renderRight", {});
+        document.dispatchEvent(event);
+    }
 }
 
 // Creación de la primer lista en caso que no exista
@@ -92,31 +98,3 @@ if (arregloDeListasSimple.length === 0) {
     aniadirNuevaListaSimple(obj);
     
 }
-
-// Parche "polyfills" para que no salga error "ReferenceError: CustomEvent is not defined" al momento de ejecución en node.js
-
-(function () {
-    if (typeof window.CustomEvent === 'function') return false;
-  
-    interface CustomEventParams {
-      bubbles?: boolean;
-      cancelable?: boolean;
-      detail?: any;
-    }
-  
-    function CustomEvent(event: string, params?: CustomEventParams): CustomEvent {
-      params = params || { bubbles: false, cancelable: false, detail: undefined };
-      const evt = document.createEvent('CustomEvent') as CustomEvent;
-      evt.initCustomEvent(
-        event,
-        params.bubbles || false,
-        params.cancelable || false,
-        params.detail || undefined
-      );
-      return evt;
-    }
-  
-    CustomEvent.prototype = window.Event.prototype;
-    // @ts-ignore
-    window.CustomEvent = CustomEvent;
-  })();
