@@ -1,11 +1,12 @@
 import { aniadeElementoNuevo, dataListActual, indexActual } from "@/app/Datos/CRUD"
 import { useEffect, useState } from "react";
-import { ElementoEnLista } from "./ElementoEnLista";
+import { NuevoElementoEnLista } from "./NuevoElementoEnLista/NuevoElementoEnLista";
+import { MenuSelector } from "./NuevoElementoEnLista/MenuSelector";
 
 let toggleRender = false;
 export const NavegacionDerecha = (): JSX.Element => {
     const [ toggleForRender, setToggleForRender ] = useState(toggleRender);
-
+    const [showMenuSelector, setShowMenuSelector] = useState(false);
     useEffect(()=>{
         document.addEventListener('renderRight', handleRender);
     },[]);
@@ -15,6 +16,10 @@ export const NavegacionDerecha = (): JSX.Element => {
         setToggleForRender(toggleRender);
     }
 
+    const handleOpenMenuSelector = () => {
+        setShowMenuSelector(true);
+    }
+
     return (
         <div className="navegacionDerecha">
             <div className="containerActions">
@@ -22,8 +27,15 @@ export const NavegacionDerecha = (): JSX.Element => {
                     <img src="../icons/boton-agregar.png" alt="add button" />
                 </button>
             </div>
+            { showMenuSelector &&
+                    <MenuSelector
+                        setShowMenuSelector = { setShowMenuSelector }/>
+                }
             { dataListActual.map ((elemento, index)=>
-                <ElementoEnLista key = {index} elemento = { elemento }/>
+                <NuevoElementoEnLista 
+                    key = {index} elemento = { elemento }
+                    showMenuSelector = { showMenuSelector }
+                    setShowMenuSelector = { setShowMenuSelector }/>
             )}
 
         </div>

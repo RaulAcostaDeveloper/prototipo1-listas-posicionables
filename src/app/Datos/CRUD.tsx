@@ -73,6 +73,11 @@ export const aniadeElementoNuevo = () => {
     renderRight();
 }
 
+export const eliminarElUltimoElemento = () => {
+    dataListActual.pop();
+    renderRight();
+}
+
 // Método que ejecuta el renderizado
 const renderLeft = () => {
     // Usa typeof window !== 'undefined' para que solo use CustomEvent en el navegador y no en el servidor
