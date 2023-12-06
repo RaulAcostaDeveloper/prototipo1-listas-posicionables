@@ -1,4 +1,3 @@
-import { AniadirElementosButton } from "./AniadirElementos/AniadirElementosButton";
 import { CantidadElemento } from "./CantidadElemento/CantidadElemento";
 import { CheckboxElemento } from "./Checkbox/CheckboxElemento";
 import { FechaPrioridad } from "./Fecha/FechaPrioridad";
@@ -19,10 +18,10 @@ export const ElementoEnLista = ({ elemento }: Props) => {
     return (
         <div className="elementoEnLista">
             <TituloElemento/>
-            {/* <CantidadElemento/> */}
-            {/* <FechaPrioridad/> */}
-            {/* <CheckboxElemento/> */}
-            {/* <PrioridadElemento/> */}
+            <CantidadElemento/>
+            <FechaPrioridad/>
+            <CheckboxElemento/>
+            <PrioridadElemento/>
         </div>
     )
 }
