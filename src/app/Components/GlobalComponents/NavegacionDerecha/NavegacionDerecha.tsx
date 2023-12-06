@@ -46,7 +46,7 @@ export const NavegacionDerecha = (): JSX.Element => {
                     setShowMenuSelector = { setShowMenuSelector }/>
             )}
             <p>Comportamiento de algunos elementos</p>
-
+                <a href="https://prototipo1-elementos-listas-posicionables.vercel.app/" target="_blank">Ir al proyecto</a>
         </div>
     )
 }

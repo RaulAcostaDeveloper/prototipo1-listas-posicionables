@@ -1,6 +1,6 @@
 import { useState } from "react";
 const arrSimbolos = [
-    '$', '€', ' ',
+    '$', '€','minutos', 'horas', ' ',
 ]
 export const SelectorDeSimbolo = () => {
     const [posicionSimbolo, setPosicionSimbolo] = useState(0);
